@@ -40,7 +40,7 @@ jobs:
           SPRING_DATASOURCE_URL: jdbc:mysql://localhost:3306/world
           SPRING_DATASOURCE_USERNAME: 'test'
           SPRING_DATASOURCE_PASSWORD: '1234'
-      run: mvn -B package --file 2024docapp3/pom.xml && cp 2024docapp3/target/*.war doc-app3
+      run: mvn -B package --file pom.xml && cp target/*.war doc-app3
       #run: mvn -Dmaven.test.skip=true -B package --file doc-app3/pom.xml && cp doc-app3/target/*.war doc-app3
 
      # Docker 이미지 빌드
@@ -70,7 +70,7 @@ jobs:
         script: |
           sudo docker container stop doc-app3 #컨테이너 종료
           sudo docker container rm doc-app3  #컨테이너 삭제
-          sudo docker rmi kingnuna/doc-app3:v1  #이미지 삭제
-          sudo docker pull kingnuna/doc-app3:v1 # 이미지 다운로드
+          sudo docker rmi yj9977/docapp3:v1  #이미지 삭제
+          sudo docker pull yj9977/docapp3:v1 # 이미지 다운로드
           cd doc-app3
           sudo docker-compose up
